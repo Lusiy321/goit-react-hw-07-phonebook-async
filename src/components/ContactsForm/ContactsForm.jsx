@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactSlice';
+import { selectContacts } from 'redux/selectors';
+import { addContacts } from 'redux/contactAction';
 import { Form, Label, Input, Button } from './ContactsForm.styled';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleChange = ({ currentTarget: { name, value } }) => {
@@ -36,7 +36,7 @@ export const ContactForm = () => {
     ) {
       return alert('Write all forms');
     }
-    dispatch(addContact(newContact));
+    dispatch(addContacts(newContact));
   };
 
   const handleSubmit = evt => {
