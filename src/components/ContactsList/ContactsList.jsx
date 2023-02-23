@@ -21,7 +21,9 @@ export const ContactList = () => {
         .includes(filterContacts.trim().toLowerCase());
     });
   };
+
   const foundContacts = findContact();
+
   return (
     <List>
       {foundContacts.map(({ id, name, number }) => (
